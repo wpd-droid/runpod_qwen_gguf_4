@@ -7,8 +7,9 @@ WORKDIR /comfyui/custom_nodes
 RUN git clone https://github.com/city96/ComfyUI-GGUF.git
 RUN git clone https://github.com/glowcone/comfyui-base64-to-image.git
 
-# dependency for ComfyUI-GGUF
+# dependencies
 RUN pip install --no-cache-dir --upgrade gguf
+RUN pip install --no-cache-dir opencv-python pillow numpy
 
 # install any node requirements if present
 RUN for d in /comfyui/custom_nodes/*; do \
@@ -28,6 +29,3 @@ RUN wget -O /comfyui/models/unet/Qwen-Rapid-NSFW-v23_Q4_K.gguf \
 
 RUN wget -O /comfyui/models/vae/pig_qwen_image_vae_fp32-f16.gguf \
     "https://huggingface.co/calcuis/pig-vae/resolve/main/pig_qwen_image_vae_fp32-f16.gguf"
-
-# copy all input data (like images or videos) into comfyui
-# COPY input/ /comfyui/input/
