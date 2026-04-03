@@ -22,12 +22,12 @@ WORKDIR /comfyui
 RUN git pull || true
 
 # download models into comfyui
-RUN mkdir -p /comfyui/models/unet /comfyui/models/clip /comfyui/models/vae
+RUN mkdir -p /comfyui/models/diffusion_models /comfyui/models/clip /comfyui/models/vae
 
 RUN wget -O /comfyui/models/clip/Qwen2.5-VL-7B-Instruct-abliterated.Q8_0.gguf \
     "https://huggingface.co/Phil2Sat/Qwen-Image-Edit-Rapid-AIO-GGUF/resolve/main/Qwen2.5-VL-7B-Instruct-abliterated/Qwen2.5-VL-7B-Instruct-abliterated.Q8_0.gguf"
 
-RUN wget -O /comfyui/models/unet/Qwen-Rapid-NSFW-v23_Q4_K.gguf \
+RUN wget -O /comfyui/models/diffusion_models/Qwen-Rapid-NSFW-v23_Q4_K.gguf \
     "https://huggingface.co/Arunk25/Qwen-Image-Edit-Rapid-AIO-GGUF/resolve/main/v23/Qwen-Rapid-NSFW-v23_Q4_K.gguf"
 
 RUN wget -O /comfyui/models/vae/pig_qwen_image_vae_fp32-f16.gguf \
